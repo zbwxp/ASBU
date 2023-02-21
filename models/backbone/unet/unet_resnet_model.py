@@ -5,7 +5,7 @@ import torch.nn.functional as F
 
 from .unet_parts import inconv, down, up, outconv
 from .. import resnet
-from mmdet.ops.dcn.deform_conv import ModulatedDeformConvPack as Deform
+# from mmdet.ops.dcn.deform_conv import ModulatedDeformConvPack as Deform
 
 
 class UNetResNet(nn.Module):
