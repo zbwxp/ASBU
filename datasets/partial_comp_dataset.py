@@ -23,6 +23,8 @@ class PartialCompDataset(Dataset):
         self.dataset = config['dataset']
         if self.dataset == 'COCOA':
             self.data_reader = reader.COCOADataset(config['{}_annot_file'.format(phase)])
+        elif self.dataset == 'mada':	
+            self.data_reader = reader.MADADataset(config['{}_annot_file'.format(phase)])
         else:
             if self.dataset == 'KINSNew':
                 self.data_reader = reader.KINSNewDataset(
@@ -201,9 +203,9 @@ class PartialCompDataset(Dataset):
             erased_modal.astype(np.float32)).unsqueeze(0) # 1HW
         
         if self.occluded_only:
-            target = torch.from_numpy(occluded.astype(np.int))
+            target = torch.from_numpy(occluded.astype(np.int32))
         else:
-            target = torch.from_numpy(modal.astype(np.int)) # HW
+            target = torch.from_numpy(modal.astype(np.int32)) # HW
 
         if self.boundary_label:
             target = torch.stack([target, gt_boundary.long()])

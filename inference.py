@@ -236,7 +236,7 @@ def infer_order(model, image, inmodal, category, bboxes, use_rgb=True, th=0.5, d
     '''
     deal_with_fullcover = False
     num = inmodal.shape[0]
-    order_matrix = np.zeros((num, num), dtype=np.int)
+    order_matrix = np.zeros((num, num), dtype=np.int32)
     ind = []
     if deal_with_fullcover:
         fullcover_inds = []
@@ -359,7 +359,7 @@ def infer_gt_order(inmodal, amodal):
     #inmodal = inmodal.numpy()
     #amodal = amodal.numpy()
     num = inmodal.shape[0]
-    gt_order_matrix = np.zeros((num, num), dtype=np.int)
+    gt_order_matrix = np.zeros((num, num), dtype=np.int32)
     for i in range(num):
         for j in range(i + 1, num):
             if not bordering(inmodal[i], inmodal[j]):
@@ -414,8 +414,8 @@ def get_neighbors_recur(graph, idx):
 
 
 def get_ancestors(graph, idx):
-    is_ancestor = np.zeros((graph.shape[0],), dtype=np.bool)
-    visited = np.zeros((graph.shape[0],), dtype=np.bool)
+    is_ancestor = np.zeros((graph.shape[0],), dtype=np.bool_)
+    visited = np.zeros((graph.shape[0],), dtype=np.bool_)
     queue = {idx}
     while len(queue) > 0:
         q = queue.pop()

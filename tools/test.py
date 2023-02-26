@@ -59,6 +59,8 @@ class Tester(object):
         self.data_root = self.args.image_root
         if dataset == 'COCOA':
             self.data_reader = reader.COCOADataset(self.args.annotation)
+        elif dataset == 'mada':
+            self.data_reader = reader.MADADataset(self.args.annotation)
         else:
             if dataset == 'KINSNew':
                 self.data_reader = reader.KINSNewDataset(
