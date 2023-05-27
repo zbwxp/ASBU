@@ -1,7 +1,7 @@
 # source /nfs/hpc/share/nguyenkh/miniconda3/bin/activate
 # conda activate deocclusion
-CUDA_VISIBLE_DEVICES=2,3
-
+export CUDA_VISIBLE_DEVICES=2,3
+echo $CUDA_VISIBLE_DEVICES
 num_proc=2
 
 dataset=mada # change the dataset name here COCOA or KINS
